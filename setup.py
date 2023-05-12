@@ -19,5 +19,12 @@ setuptools.setup(
     packages=["selenium_assist"],
     install_requires=["selenium<4", "webdriver_manager"],
     keywords=["pypi", "selenium_assist"],
+    classifiers=[
+        'Development Status :: 2 - Pre-Alpha',
+        'Intended Audience :: Developers',
+        'Topic :: Software Development :: Libraries :: Python Modules',
+        'License :: OSI Approved :: MIT License',
+        'Programming Language :: Python :: 3',
+    ],
     download_url="https://github.com/ivanmicetic/selenium-assist/archive/refs/tags/v0.2.0.tar.gz"
 )
