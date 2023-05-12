@@ -17,5 +17,5 @@ setuptools.setup(
     },
     license="MIT",
     packages=["selenium_helpers"],
-    install_requires=["selenium==3.141.0", "webdriver_manager"],
+    install_requires=["selenium<4", "webdriver_manager"],
 )
