@@ -10,7 +10,7 @@ def connect_webdriver(no_headless):
     os.environ["WDM_LOG"] = str(logging.NOTSET)
     # place chromedriver in cwd
     os.environ["WDM_LOCAL"] = "1"
-    # turn off the progress ba
+    # turn off the progress bar
     os.environ["WDM_PROGRESS_BAR"] = str(0)
     # skip SSL verification
     # os.environ["WDM_SSL_VERIFY"] = "0"
