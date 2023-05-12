@@ -1,6 +1,6 @@
 import logging
 import time
-from selenium_helpers.helpers import dump_and_exit
+from selenium_assist.helpers import dump_and_exit
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import TimeoutException
@@ -10,7 +10,7 @@ from selenium.common.exceptions import StaleElementReferenceException
 from selenium.webdriver.common.action_chains import ActionChains
 
 
-def selenium_load_page(task, url, driver):
+def load_page(task, url, driver):
     logging.debug(task)
     try:
         driver.get(url)
@@ -19,7 +19,7 @@ def selenium_load_page(task, url, driver):
     return
 
 
-def selenium_wait_for_presence(task, xpath, driver, timeout=60, extra_timeout=0):
+def wait_for_presence(task, xpath, driver, timeout=60, extra_timeout=0):
     logging.debug(task)
     try:
         element_present = EC.presence_of_element_located((By.XPATH, xpath))
@@ -33,7 +33,7 @@ def selenium_wait_for_presence(task, xpath, driver, timeout=60, extra_timeout=0)
     return
 
 
-def selenium_wait_for_visibility(task, xpath, driver, timeout=60, extra_timeout=3):
+def wait_for_visibility(task, xpath, driver, timeout=60, extra_timeout=3):
     logging.debug(task)
     try:
         element_present = EC.visibility_of_element_located((By.XPATH, xpath))
@@ -47,7 +47,7 @@ def selenium_wait_for_visibility(task, xpath, driver, timeout=60, extra_timeout=
     return
 
 
-def selenium_click_element(task, xpath, driver):
+def click_element(task, xpath, driver):
     logging.debug(task)
     try:
         driver.find_element_by_xpath(xpath).click()
@@ -56,7 +56,7 @@ def selenium_click_element(task, xpath, driver):
     return
 
 
-def selenium_send_keys(task, xpath, keys, driver, extra_timeout=5):
+def send_keys(task, xpath, keys, driver, extra_timeout=5):
     logging.debug(task)
     try:
         element_present = EC.element_to_be_clickable((By.XPATH, xpath))
@@ -74,7 +74,7 @@ def selenium_send_keys(task, xpath, keys, driver, extra_timeout=5):
     return
 
 
-def selenium_hoover_over_element(task, xpath, driver):
+def hoover_over_element(task, xpath, driver):
     logging.debug(task)
     try:
         element = driver.find_element_by_xpath(xpath)
@@ -87,7 +87,7 @@ def selenium_hoover_over_element(task, xpath, driver):
     return
 
 
-def selenium_switch_to_iframe(task, xpath, driver, timeout=60, extra_timeout=0):
+def switch_to_iframe(task, xpath, driver, timeout=60, extra_timeout=0):
     logging.debug(task)
     try:
         element_present = EC.frame_to_be_available_and_switch_to_it((By.XPATH, xpath))
@@ -100,7 +100,7 @@ def selenium_switch_to_iframe(task, xpath, driver, timeout=60, extra_timeout=0):
     return
 
 
-def selenium_get_table_data(task, xpath, driver):
+def get_table_data(task, xpath, driver):
     logging.debug(task)
     data = []
     try:

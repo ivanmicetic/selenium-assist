@@ -4,19 +4,20 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="selenium_helpers",
-    version="0.1.1",
+    name="selenium_assist",
+    version="0.2.0",
     author="Ivan Mičetić",
     author_email="ivan.micetic@gmail.com",
     description="Helper functions for selenium",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/ivanmicetic/selenium-helpers",
+    url="https://github.com/ivanmicetic/selenium-assist",
     project_urls={
-        "Bug Tracker": "https://github.com/ivanmicetic/selenium-helpers/issues"
+        "Bug Tracker": "https://github.com/ivanmicetic/selenium-assist/issues"
     },
     license="MIT",
-    packages=["selenium_helpers"],
+    packages=["selenium_assist"],
     install_requires=["selenium<4", "webdriver_manager"],
-    keywords=["pypi", "selenium_helpers"],
+    keywords=["pypi", "selenium_assist"],
+    download_url="https://github.com/ivanmicetic/selenium-assist/archive/refs/tags/v0.2.0.tar.gz"
 )
