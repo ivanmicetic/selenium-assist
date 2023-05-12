@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="selenium_helpers",
-    version="0.1.0",
+    version="0.1.1",
     author="Ivan Mičetić",
     author_email="ivan.micetic@gmail.com",
     description="Helper functions for selenium",
@@ -18,4 +18,5 @@ setuptools.setup(
     license="MIT",
     packages=["selenium_helpers"],
     install_requires=["selenium<4", "webdriver_manager"],
+    keywords=["pypi", "selenium_helpers"],
 )
