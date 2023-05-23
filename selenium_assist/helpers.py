@@ -1,3 +1,4 @@
+import sys
 import os
 import logging
 import time
@@ -12,7 +13,11 @@ def cleanup():
 
 
 def save_screenshot(filename, driver):
-    fn = os.path.join(os.path.dirname(os.path.realpath(__file__)), filename)
+    try:
+        main_file = str(sys.modules['__main__'].__file__)
+    except AttributeError:
+        main_file = __file__
+    fn = os.path.join(os.path.dirname(os.path.realpath(main_file)), filename)
     logging.info(f"Saving screenshot {fn} ...")
     if os.path.exists(fn):
         os.remove(fn)
