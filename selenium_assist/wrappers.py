@@ -56,7 +56,7 @@ def click_element(task, xpath, driver):
     return
 
 
-def send_keys(task, xpath, keys, driver, extra_timeout=5):
+def send_keys(task, xpath, keys, driver, extra_timeout=5, skip_check=False):
     logging.debug(task)
     try:
         element_present = EC.element_to_be_clickable((By.XPATH, xpath))
@@ -64,9 +64,10 @@ def send_keys(task, xpath, keys, driver, extra_timeout=5):
         element = driver.find_element_by_xpath(xpath)
         element.clear()
         element.send_keys(keys)
-        WebDriverWait(driver, extra_timeout).until(
-            lambda browser: element.get_attribute("value") == keys
-        )
+        if not skip_check:
+            WebDriverWait(driver, extra_timeout).until(
+                lambda browser: element.get_attribute("value") == keys
+            )
     except Exception as e:
         dump_and_exit(
             "Cannot send keys on element, dumping source and exiting!", driver, exc=e
