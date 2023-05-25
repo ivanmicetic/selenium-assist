@@ -1,6 +1,17 @@
 # selenium-assist
 Python package for easy writing of selenium scripts.
 
+Implemented helper functions:
+- connect_webdriver
+- load_page
+- wait_for_presence
+- wait_for_visibility
+- click_element
+- send_keys
+- hoover_over_element
+- switch_to_iframe
+- get_table_data
+
 ## install
 ```bash
 pip install selenium-assist
