@@ -14,7 +14,7 @@ def cleanup():
 
 def save_screenshot(filename, driver):
     try:
-        main_file = str(sys.modules['__main__'].__file__)
+        main_file = str(sys.modules["__main__"].__file__)
     except AttributeError:
         main_file = __file__
     fn = os.path.join(os.path.dirname(os.path.realpath(main_file)), filename)
@@ -29,10 +29,14 @@ def dump_and_exit(warnmsg, driver, exc=None):
     if exc:
         logging.exception(exc)
     logging.error(warnmsg)
-    dump_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), "dumps")
+    try:
+        main_file = str(sys.modules["__main__"].__file__)
+    except AttributeError:
+        main_file = __file__
+    dump_dir = os.path.join(os.path.dirname(os.path.realpath(main_file)), "dumps")
     Path(dump_dir).mkdir(exist_ok=True)
     fnroot = os.path.join(
-        os.path.dirname(os.path.realpath(__file__)),
+        os.path.dirname(os.path.realpath(main_file)),
         "dumps",
         "dump_{}".format(
             datetime.datetime.fromtimestamp(time.time()).strftime("%Y-%m-%d %H:%M:%S")
