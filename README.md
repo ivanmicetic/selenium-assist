@@ -1,7 +1,7 @@
 # selenium-assist
 
-[![PyPI Latest Release](https://img.shields.io/pypi/v/selenium_assist.svg)](https://pypi.org/project/selenium-assist/)
-[![License](https://img.shields.io/pypi/l/selenium_assist.svg)](https://github.com/ivanmicetic/selenium_assist/blob/master/LICENSE)
+[![PyPI](https://img.shields.io/pypi/v/selenium-assist)](https://pypi.org/project/selenium-assist/)
+[![PyPI - License](https://img.shields.io/pypi/l/selenium-assist)](https://github.com/ivanmicetic/selenium-assist/blob/main/LICENSE)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 Python package for easy writing of selenium scripts.
