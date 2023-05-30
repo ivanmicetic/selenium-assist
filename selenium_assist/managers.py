@@ -22,7 +22,7 @@ def connect_webdriver(no_headless):
     chrome_options.add_argument("--dns-prefetch-disable")
     chrome_options.add_argument("--disable-gpu")
     chrome_options.add_argument("--no-sandbox")
- 
+
     # os.environ['WDM_LOG_LEVEL'] = '0'
     # chrome_options.add_experimental_option("excludeSwitches", ["enable-logging"])
 
