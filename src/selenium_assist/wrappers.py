@@ -50,7 +50,7 @@ def wait_for_visibility(task, xpath, driver, timeout=60, extra_timeout=3):
 def click_element(task, xpath, driver):
     logging.debug(task)
     try:
-        driver.find_element_by_xpath(xpath).click()
+        driver.find_element("xpath", xpath).click()
     except (ElementClickInterceptedException, StaleElementReferenceException):
         dump_and_exit("Cannot click on element, dumping source and exiting!", driver)
     return
@@ -61,7 +61,7 @@ def send_keys(task, xpath, keys, driver, extra_timeout=5, skip_check=False):
     try:
         element_present = EC.element_to_be_clickable((By.XPATH, xpath))
         WebDriverWait(driver, extra_timeout).until(element_present)
-        element = driver.find_element_by_xpath(xpath)
+        element = driver.find_element("xpath", xpath)
         element.clear()
         element.send_keys(keys)
         if not skip_check:
@@ -78,7 +78,7 @@ def send_keys(task, xpath, keys, driver, extra_timeout=5, skip_check=False):
 def hoover_over_element(task, xpath, driver):
     logging.debug(task)
     try:
-        element = driver.find_element_by_xpath(xpath)
+        element = driver.find_element("xpath", xpath)
         action = ActionChains(driver)
         action.move_to_element(element).perform()
     except Exception as e:
