@@ -1,6 +1,7 @@
 import os
 import logging
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 
@@ -26,7 +27,7 @@ def connect_webdriver(no_headless):
     # os.environ['WDM_LOG_LEVEL'] = '0'
     # chrome_options.add_experimental_option("excludeSwitches", ["enable-logging"])
 
-    driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
+    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
 
     # set default timeout for operations
     driver.implicitly_wait(20)
