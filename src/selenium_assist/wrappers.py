@@ -114,3 +114,15 @@ def get_table_data(task, xpath, driver):
             "Cannot get table data, dumping source and exiting!", driver, exc=e
         )
     return data
+
+
+def get_element_text(task, xpath, driver):
+    logging.debug(task)
+    data = ""
+    try:
+        data = driver.find_element(By.XPATH, xpath).text
+    except Exception as e:
+        dump_and_exit(
+            "Cannot get element text, dumping source and exiting!", driver, exc=e
+        )
+    return data

@@ -11,5 +11,6 @@ from .wrappers import (
     hoover_over_element,
     switch_to_iframe,
     get_table_data,
+    get_element_text
 )
 from .managers import connect_webdriver
