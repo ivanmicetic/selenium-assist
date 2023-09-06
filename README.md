@@ -16,6 +16,7 @@ Implemented helper functions:
 - hoover_over_element
 - switch_to_iframe
 - get_table_data
+- get_element_text
 
 ## install
 ```bash
