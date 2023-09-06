@@ -16,13 +16,17 @@ def load_page(task, url, driver, continue_on_error=False):
         driver.get(url)
     except Exception as e:
         if not continue_on_error:
-            dump_and_exit("Cannot load webpage, dumping source and exiting!", driver, exc=e)
+            dump_and_exit(
+                "Cannot load webpage, dumping source and exiting!", driver, exc=e
+            )
         else:
             logging.warning("Cannot load webpage, continuing ...")
     return
 
 
-def wait_for_presence(task, xpath, driver, timeout=60, extra_timeout=0, continue_on_error=False):
+def wait_for_presence(
+    task, xpath, driver, timeout=60, extra_timeout=0, continue_on_error=False
+):
     logging.debug(task)
     try:
         element_present = EC.presence_of_element_located((By.XPATH, xpath))
@@ -35,11 +39,15 @@ def wait_for_presence(task, xpath, driver, timeout=60, extra_timeout=0, continue
                 driver,
             )
         else:
-            logging.warning(f"Timed out waiting for element presence ({xpath}), continuing ...")
+            logging.warning(
+                f"Timed out waiting for element presence ({xpath}), continuing ..."
+            )
     return
 
 
-def wait_for_visibility(task, xpath, driver, timeout=60, extra_timeout=3, continue_on_error=False):
+def wait_for_visibility(
+    task, xpath, driver, timeout=60, extra_timeout=3, continue_on_error=False
+):
     logging.debug(task)
     try:
         element_present = EC.visibility_of_element_located((By.XPATH, xpath))
@@ -52,9 +60,7 @@ def wait_for_visibility(task, xpath, driver, timeout=60, extra_timeout=3, contin
                 driver,
             )
         else:
-            logging.warning(
-                "Timed out waiting for element visibility, continuing ..."
-            )
+            logging.warning("Timed out waiting for element visibility, continuing ...")
     return
 
 
@@ -64,13 +70,23 @@ def click_element(task, xpath, driver, continue_on_error=False):
         driver.find_element(By.XPATH, xpath).click()
     except (ElementClickInterceptedException, StaleElementReferenceException):
         if not continue_on_error:
-            dump_and_exit("Cannot click on element, dumping source and exiting!", driver)
+            dump_and_exit(
+                "Cannot click on element, dumping source and exiting!", driver
+            )
         else:
             logging.warning("Cannot click on element, continuing ...")
     return
 
 
-def send_keys(task, xpath, keys, driver, extra_timeout=5, skip_check=False, continue_on_error=False):
+def send_keys(
+    task,
+    xpath,
+    keys,
+    driver,
+    extra_timeout=5,
+    skip_check=False,
+    continue_on_error=False,
+):
     logging.debug(task)
     try:
         element_present = EC.element_to_be_clickable((By.XPATH, xpath))
@@ -85,7 +101,9 @@ def send_keys(task, xpath, keys, driver, extra_timeout=5, skip_check=False, cont
     except Exception as e:
         if not continue_on_error:
             dump_and_exit(
-                "Cannot send keys on element, dumping source and exiting!", driver, exc=e
+                "Cannot send keys on element, dumping source and exiting!",
+                driver,
+                exc=e,
             )
         else:
             logging.warning("Cannot send keys on element, continuing ...")
@@ -108,7 +126,9 @@ def hoover_over_element(task, xpath, driver, continue_on_error=False):
     return
 
 
-def switch_to_iframe(task, xpath, driver, timeout=60, extra_timeout=0, continue_on_error=False):
+def switch_to_iframe(
+    task, xpath, driver, timeout=60, extra_timeout=0, continue_on_error=False
+):
     logging.debug(task)
     try:
         element_present = EC.frame_to_be_available_and_switch_to_it((By.XPATH, xpath))
