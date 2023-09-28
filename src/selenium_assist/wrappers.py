@@ -175,3 +175,18 @@ def get_element_text(task, xpath, driver, continue_on_error=False):
         else:
             logging.warning("Cannot get element text, continuing ...")
     return data
+
+def execute_script(task, xpath, script, driver, continue_on_error=False):
+    logging.debug(task)
+    data = ""
+    try:
+        data = driver.find_element(By.XPATH, xpath)
+        driver.execute_script(script, data)
+    except Exception as e:
+        if not continue_on_error:
+            dump_and_exit(
+                'Cannot execute script "{}", dumping source and exiting!', driver, exc=e
+            )
+        else:
+            logging.warning('Cannot execute script "{}", continuing ...')
+    return data
