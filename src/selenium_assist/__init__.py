@@ -12,5 +12,6 @@ from .wrappers import (
     switch_to_iframe,
     get_table_data,
     get_element_text,
+    execute_script
 )
 from .managers import connect_webdriver

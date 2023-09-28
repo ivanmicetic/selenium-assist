@@ -4,7 +4,7 @@
 [![PyPI - License](https://img.shields.io/pypi/l/selenium-assist)](https://github.com/ivanmicetic/selenium-assist/blob/main/LICENSE)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-Python package for easy writing of selenium scripts.
+Python package for easy writing of Selenium scripts.
 
 Implemented helper functions:
 - connect_webdriver
@@ -17,6 +17,7 @@ Implemented helper functions:
 - switch_to_iframe
 - get_table_data
 - get_element_text
+- execute_script
 
 ## install
 ```bash
