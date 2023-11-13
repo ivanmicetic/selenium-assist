@@ -64,10 +64,11 @@ def wait_for_visibility(
     return
 
 
-def click_element(task, xpath, driver, continue_on_error=False):
+def click_element(task, xpath, driver, extra_timeout=0, continue_on_error=False):
     logging.debug(task)
     try:
         driver.find_element(By.XPATH, xpath).click()
+        time.sleep(extra_timeout)
     except (ElementClickInterceptedException, StaleElementReferenceException):
         if not continue_on_error:
             dump_and_exit(
