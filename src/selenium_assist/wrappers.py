@@ -10,7 +10,7 @@ from selenium.common.exceptions import StaleElementReferenceException
 from selenium.webdriver.common.action_chains import ActionChains
 
 
-def load_page(task, url, driver, continue_on_error=False):
+def load_page(task, url, driver, continue_on_error=False, silence_warning=False):
     logging.debug(task)
     try:
         driver.get(url)
@@ -20,12 +20,19 @@ def load_page(task, url, driver, continue_on_error=False):
                 "Cannot load webpage, dumping source and exiting!", driver, exc=e
             )
         else:
-            logging.warning("Cannot load webpage, continuing ...")
+            if not silence_warning:
+                logging.warning("Cannot load webpage, continuing ...")
     return
 
 
 def wait_for_presence(
-    task, xpath, driver, timeout=60, extra_timeout=0, continue_on_error=False
+    task,
+    xpath,
+    driver,
+    timeout=60,
+    extra_timeout=0,
+    continue_on_error=False,
+    silence_warning=False,
 ):
     logging.debug(task)
     try:
@@ -39,14 +46,21 @@ def wait_for_presence(
                 driver,
             )
         else:
-            logging.warning(
-                f"Timed out waiting for element presence ({xpath}), continuing ..."
-            )
+            if not silence_warning:
+                logging.warning(
+                    f"Timed out waiting for element presence ({xpath}), continuing ..."
+                )
     return
 
 
 def wait_for_visibility(
-    task, xpath, driver, timeout=60, extra_timeout=3, continue_on_error=False
+    task,
+    xpath,
+    driver,
+    timeout=60,
+    extra_timeout=3,
+    continue_on_error=False,
+    silence_warning=False,
 ):
     logging.debug(task)
     try:
@@ -60,11 +74,16 @@ def wait_for_visibility(
                 driver,
             )
         else:
-            logging.warning("Timed out waiting for element visibility, continuing ...")
+            if not silence_warning:
+                logging.warning(
+                    "Timed out waiting for element visibility, continuing ..."
+                )
     return
 
 
-def click_element(task, xpath, driver, extra_timeout=0, continue_on_error=False):
+def click_element(
+    task, xpath, driver, extra_timeout=0, continue_on_error=False, silence_warning=False
+):
     logging.debug(task)
     try:
         driver.find_element(By.XPATH, xpath).click()
@@ -75,7 +94,8 @@ def click_element(task, xpath, driver, extra_timeout=0, continue_on_error=False)
                 "Cannot click on element, dumping source and exiting!", driver
             )
         else:
-            logging.warning("Cannot click on element, continuing ...")
+            if not silence_warning:
+                logging.warning("Cannot click on element, continuing ...")
     return
 
 
@@ -87,6 +107,7 @@ def send_keys(
     extra_timeout=5,
     skip_check=False,
     continue_on_error=False,
+    silence_warning=False,
 ):
     logging.debug(task)
     try:
@@ -107,11 +128,14 @@ def send_keys(
                 exc=e,
             )
         else:
-            logging.warning("Cannot send keys on element, continuing ...")
+            if not silence_warning:
+                logging.warning("Cannot send keys on element, continuing ...")
     return
 
 
-def hoover_over_element(task, xpath, driver, continue_on_error=False):
+def hoover_over_element(
+    task, xpath, driver, continue_on_error=False, silence_warning=False
+):
     logging.debug(task)
     try:
         element = driver.find_element(By.XPATH, xpath)
@@ -123,12 +147,19 @@ def hoover_over_element(task, xpath, driver, continue_on_error=False):
                 "Cannot hoover over element, dumping source and exiting!", driver, exc=e
             )
         else:
-            logging.warning("Cannot hoover over element, continuing ...")
+            if not silence_warning:
+                logging.warning("Cannot hoover over element, continuing ...")
     return
 
 
 def switch_to_iframe(
-    task, xpath, driver, timeout=60, extra_timeout=0, continue_on_error=False
+    task,
+    xpath,
+    driver,
+    timeout=60,
+    extra_timeout=0,
+    continue_on_error=False,
+    silence_warning=False,
 ):
     logging.debug(task)
     try:
@@ -141,11 +172,12 @@ def switch_to_iframe(
                 "Timed out switching to iframe, dumping source and exiting!", driver
             )
         else:
-            logging.warning("Timed out switching to iframe, continuing ...")
+            if not silence_warning:
+                logging.warning("Timed out switching to iframe, continuing ...")
     return
 
 
-def get_table_data(task, xpath, driver, continue_on_error=False):
+def get_table_data(task, xpath, driver, continue_on_error=False, silence_warning=False):
     logging.debug(task)
     data = []
     try:
@@ -159,11 +191,14 @@ def get_table_data(task, xpath, driver, continue_on_error=False):
                 "Cannot get table data, dumping source and exiting!", driver, exc=e
             )
         else:
-            logging.warning("Cannot get table data, continuing ...")
+            if not silence_warning:
+                logging.warning("Cannot get table data, continuing ...")
     return data
 
 
-def get_element_text(task, xpath, driver, continue_on_error=False):
+def get_element_text(
+    task, xpath, driver, continue_on_error=False, silence_warning=False
+):
     logging.debug(task)
     data = ""
     try:
@@ -174,10 +209,14 @@ def get_element_text(task, xpath, driver, continue_on_error=False):
                 "Cannot get element text, dumping source and exiting!", driver, exc=e
             )
         else:
-            logging.warning("Cannot get element text, continuing ...")
+            if not silence_warning:
+                logging.warning("Cannot get element text, continuing ...")
     return data
 
-def execute_script(task, xpath, script, driver, continue_on_error=False):
+
+def execute_script(
+    task, xpath, script, driver, continue_on_error=False, silence_warning=False
+):
     logging.debug(task)
     data = ""
     try:
@@ -189,5 +228,6 @@ def execute_script(task, xpath, script, driver, continue_on_error=False):
                 'Cannot execute script "{}", dumping source and exiting!', driver, exc=e
             )
         else:
-            logging.warning('Cannot execute script "{}", continuing ...')
+            if not silence_warning:
+                logging.warning('Cannot execute script "{}", continuing ...')
     return data
