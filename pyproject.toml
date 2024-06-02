@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "selenium_assist"
-version = "0.3.4"
+version = "0.3.5"
 authors = [
     { name="Ivan Mičetić", email="ivan.micetic@gmail.com" },
 ]
