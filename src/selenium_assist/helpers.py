@@ -46,5 +46,10 @@ def dump_and_exit(warnmsg, driver, exc=None):
     html = driver.page_source
     with open(fnroot + ".html", "w") as fOut:
         fOut.write(html)
+    with open(fnroot + ".txt", "w") as fOut:
+        fOut.write(warnmsg)
+        if exc:
+            fOut.write("\n")
+            fOut.write(str(exc))        
     cleanup()
     exit(1)
